@@ -1,0 +1,33 @@
+version: '3'
+services:
+  php:
+    build: ./docker/php
+    ports:
+      - '80:80'
+    volumes:
+      - './backend:/var/www/html'
+
+  frontend:
+    image: node:21-alpine
+    volumes:
+      - './frontend:/usr/src/app'
+    ports:
+      - "5173:5173"
+    build: ./docker/frontend
+
+  database:
+    image: mysql
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=root'
+    volumes:
+      - './docker/data/mysql:/var/lib/mysql'
+
+  redis:
+    image: redis
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - '8081:80'
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=root'
