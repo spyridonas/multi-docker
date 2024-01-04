@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {# {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+{% endblock %} #}
+
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.user_fathername) }}
+        {{ form_row(registrationForm.user_surname) }}
+        {{ form_row(registrationForm.user_phoneno_prim) }}
+        {{ form_row(registrationForm.user_email_prim) }}
+        {{ form_row(registrationForm.user_mobile_prim) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        
+        {{ form_row(registrationForm.roles) }}
+        {{ form_row(registrationForm.agreeTerms,{
+            label:'Συμφωνώ με τους όρους και τις προϋποθέσεις'
+        }) }}
+
+            <button type="submit" class="btn">Register</button>
+        {{ form_end(registrationForm) }}
+   </div>
+   
+{% endblock %}

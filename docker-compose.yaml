@@ -16,9 +16,11 @@ services:
     build: ./docker/frontend
 
   database:
+    ports:
+      - 3306:3306
     image: mysql
     environment:
-      - 'MYSQL_ROOT_PASSWORD=root'
+      - MYSQL_ROOT_PASSWORD=root
     volumes:
       - './docker/data/mysql:/var/lib/mysql'
 
