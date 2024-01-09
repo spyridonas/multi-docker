@@ -16,13 +16,17 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function __construct(private readonly UserRepository $userRepository)
     {
-        // dd($userRepository->findAll());
-        return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
-        ]);
+    }
+
+    #[Route('/', name: 'app_user_index', methods: ['GET'])]
+    public function index(): Response
+    {
+        return $this->json($this->userRepository->returnAllUsersArray());
+//        return $this->render('user/index.html.twig', [
+//            'users' => $userRepository->returnAllUsersArray(),
+//        ]);
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
@@ -55,11 +59,12 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(int $id): Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
+        return $this->json($this->userRepository->returnUserArray($id));
+//        return $this->render('user/show.html.twig', [
+//            'user' => $user,
+//        ]);
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
