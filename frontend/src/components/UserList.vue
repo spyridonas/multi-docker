@@ -1,5 +1,4 @@
 <script>
-
 export default {
   data() {
     return {
@@ -12,10 +11,6 @@ export default {
   }
 }
 </script>
-<!--data() {-->
-
-<!--}-->
-<!--</script>-->
 <template>
   <h1>User index</h1>
 
@@ -35,11 +30,10 @@ export default {
     </tr>
     </thead>
     <tbody>
-<!--    {% for user in users %}-->
     <tr v-for="user in users">
       <td>{{ user.id }}</td>
       <td>{{ user.user_name }}</td>
-      <td>{{ user.roles  }}</td>
+      <td>{{ user.roles }}</td>
       <td>{{ user.password }}</td>
       <td>{{ user.user_fathername }}</td>
       <td>{{ user.user_surname }}</td>
@@ -51,11 +45,9 @@ export default {
         <a href="#">edit</a>
       </td>
     </tr>
-<!--    {% else %}-->
     <tr v-if="users.length === 0">
       <td colspan="10">no records found</td>
     </tr>
-<!--    {% endfor %}-->
     </tbody>
   </table>
 </template>
