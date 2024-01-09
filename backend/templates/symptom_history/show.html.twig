@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymptomHistory{% endblock %}
+
+{% block body %}
+    <h1>SymptomHistory</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Hist_id</th>
+                <td>{{ symptom_history.histId }}</td>
+            </tr>
+            <tr>
+                <th>Hist_date</th>
+                <td>{{ symptom_history.histDate ? symptom_history.histDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hist_time</th>
+                <td>{{ symptom_history.histTime }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_symptom_history_index') }}">back to list</a>
+
+    <a href="{{ path('app_symptom_history_edit', {'hist_id': symptom_history.hist_id}) }}">edit</a>
+
+    {{ include('symptom_history/_delete_form.html.twig') }}
+{% endblock %}

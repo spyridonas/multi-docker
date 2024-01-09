@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SymptomHistory index{% endblock %}
+
+{% block body %}
+    <h1>SymptomHistory index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Hist_id</th>
+                <th>Hist_date</th>
+                <th>Hist_time</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for symptom_history in symptom_histories %}
+            <tr>
+                <td>{{ symptom_history.histId }}</td>
+                <td>{{ symptom_history.histDate ? symptom_history.histDate|date('Y-m-d') : '' }}</td>
+                <td>{{ symptom_history.histTime }}</td>
+                <td>
+                    <a href="{{ path('app_symptom_history_show', {'hist_id': symptom_history.hist_id}) }}">show</a>
+                    <a href="{{ path('app_symptom_history_edit', {'hist_id': symptom_history.hist_id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_symptom_history_new') }}">Create new</a>
+{% endblock %}

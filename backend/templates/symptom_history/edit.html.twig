@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SymptomHistory{% endblock %}
+
+{% block body %}
+    <h1>Edit SymptomHistory</h1>
+
+    {{ include('symptom_history/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_symptom_history_index') }}">back to list</a>
+
+    {{ include('symptom_history/_delete_form.html.twig') }}
+{% endblock %}

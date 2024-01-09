@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hospital{% endblock %}
+
+{% block body %}
+    <h1>Hospital</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hospital.id }}</td>
+            </tr>
+            <tr>
+                <th>Hospital_name</th>
+                <td>{{ hospital.hospitalName }}</td>
+            </tr>
+            <tr>
+                <th>Hospital_address</th>
+                <td>{{ hospital.hospitalAddress }}</td>
+            </tr>
+            <tr>
+                <th>Hospital_company</th>
+                <td>{{ hospital.hospitalCompany }}</td>
+            </tr>
+            <tr>
+                <th>Hospital_phone</th>
+                <td>{{ hospital.hospitalPhone }}</td>
+            </tr>
+            <tr>
+                <th>Hospital_email</th>
+                <td>{{ hospital.hospitalEmail }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hospital_index') }}">back to list</a>
+
+    <a href="{{ path('app_hospital_edit', {'id': hospital.id}) }}">edit</a>
+
+    {{ include('hospital/_delete_form.html.twig') }}
+{% endblock %}
