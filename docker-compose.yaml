@@ -34,3 +34,4 @@ services:
       - '8081:80'
     environment:
       - 'MYSQL_ROOT_PASSWORD=root'
+      - 'PMA_HOST=database'
