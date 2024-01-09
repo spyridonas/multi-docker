@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Conditions{% endblock %}
+
+{% block body %}
+    <h1>Create new Conditions</h1>
+
+    {{ include('conditions/_form.html.twig') }}
+
+    <a href="{{ path('app_conditions_index') }}">back to list</a>
+{% endblock %}

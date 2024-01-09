@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Phone index{% endblock %}
+
+{% block body %}
+    <h1>Phone index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Phone_id</th>
+                <th>Phone_literal</th>
+                <th>Phone_type</th>
+                <th>Phone_provider</th>
+                <th>Phone_sms_notify</th>
+                <th>Phone_push_notify</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for phone in phones %}
+            <tr>
+                <td>{{ phone.phoneId }}</td>
+                <td>{{ phone.phoneLiteral }}</td>
+                <td>{{ phone.phoneType }}</td>
+                <td>{{ phone.phoneProvider }}</td>
+                <td>{{ phone.phoneSmsNotify }}</td>
+                <td>{{ phone.phonePushNotify }}</td>
+                <td>
+                    <a href="{{ path('app_phone_show', {'phone_id': phone.phone_id}) }}">show</a>
+                    <a href="{{ path('app_phone_edit', {'phone_id': phone.phone_id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_phone_new') }}">Create new</a>
+{% endblock %}

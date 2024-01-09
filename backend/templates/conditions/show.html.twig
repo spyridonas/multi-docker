@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conditions{% endblock %}
+
+{% block body %}
+    <h1>Conditions</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ condition.id }}</td>
+            </tr>
+            <tr>
+                <th>Condition_name</th>
+                <td>{{ condition.conditionName }}</td>
+            </tr>
+            <tr>
+                <th>Condition_category</th>
+                <td>{{ condition.conditionCategory }}</td>
+            </tr>
+            <tr>
+                <th>Condition_description</th>
+                <td>{{ condition.conditionDescription }}</td>
+            </tr>
+            <tr>
+                <th>Condition_severity</th>
+                <td>{{ condition.conditionSeverity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_conditions_index') }}">back to list</a>
+
+    <a href="{{ path('app_conditions_edit', {'id': condition.id}) }}">edit</a>
+
+    {{ include('conditions/_delete_form.html.twig') }}
+{% endblock %}

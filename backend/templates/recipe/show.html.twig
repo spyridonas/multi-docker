@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recipe{% endblock %}
+
+{% block body %}
+    <h1>Recipe</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ recipe.id }}</td>
+            </tr>
+            <tr>
+                <th>Recipe_doctor</th>
+                <td>{{ recipe.recipeDoctor }}</td>
+            </tr>
+            <tr>
+                <th>Recipe_date</th>
+                <td>{{ recipe.recipeDate }}</td>
+            </tr>
+            <tr>
+                <th>Recipe_duration</th>
+                <td>{{ recipe.recipeDuration }}</td>
+            </tr>
+            <tr>
+                <th>Recipe_medicine_quantity</th>
+                <td>{{ recipe.recipeMedicineQuantity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_recipe_index') }}">back to list</a>
+
+    <a href="{{ path('app_recipe_edit', {'id': recipe.id}) }}">edit</a>
+
+    {{ include('recipe/_delete_form.html.twig') }}
+{% endblock %}

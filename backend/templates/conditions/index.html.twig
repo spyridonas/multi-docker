@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conditions index{% endblock %}
+
+{% block body %}
+    <h1>Conditions index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Condition_name</th>
+                <th>Condition_category</th>
+                <th>Condition_description</th>
+                <th>Condition_severity</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for condition in conditions %}
+            <tr>
+                <td>{{ condition.id }}</td>
+                <td>{{ condition.conditionName }}</td>
+                <td>{{ condition.conditionCategory }}</td>
+                <td>{{ condition.conditionDescription }}</td>
+                <td>{{ condition.conditionSeverity }}</td>
+                <td>
+                    <a href="{{ path('app_conditions_show', {'id': condition.id}) }}">show</a>
+                    <a href="{{ path('app_conditions_edit', {'id': condition.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_conditions_new') }}">Create new</a>
+{% endblock %}
